@@ -1,0 +1,9 @@
+{
+    "packageVersion": "1.0.0",
+    "disallowAdditionalPropertiesIfNotPresent": false,
+    "netCoreProjectFile": true,
+    "packageName": "Numan.RestApiClient",
+    "targetFramework": "net5.0",
+    "useDateTimeOffset": true,
+    "library": "httpClient"
+}

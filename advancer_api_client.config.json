@@ -1,0 +1,15 @@
+{
+    "supportsES6": true,
+    "enumPropertyNaming": "UPPERCASE",
+    "prependFormOrBodyParameters": true,
+    "withInterfaces": true,
+    "withSeparateModelsAndApi": true,
+    "apiPackage": "api",
+    "modelPackage": "models",
+    "npmName": "@numanbtt/new_npm_package",
+    "npmVersion": "1.0.0",
+    "withoutPrefixEnums": true,
+    "gitHost": "github.com",
+    "gitUserId": "numanbtt",
+    "gitRepoId": "new_npm_package"
+}
