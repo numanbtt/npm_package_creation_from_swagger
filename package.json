@@ -1,0 +1,24 @@
+{
+  "name": "npm_package_creation_from_swagger",
+  "version": "1.0.0",
+  "description": "create npm package from your swagger.json file",
+  "main": "src/server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/numanbtt/npm_package_creation_from_swagger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/numanbtt/npm_package_creation_from_swagger/issues"
+  },
+  "homepage": "https://github.com/numanbtt/npm_package_creation_from_swagger#readme",
+  "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "openapi-typescript-fetch": "^1.1.3",
+    "typescript-fetch": "^0.0.4"
+  }
+}
