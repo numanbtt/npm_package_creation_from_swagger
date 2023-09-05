@@ -1,0 +1,39 @@
+name: Generate API Client
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-api-client:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Generate API Client
+        run: |
+        npx @openapitools/openapi-generator-cli generate -i path/to/swagger.json -g typescript-axios -c advancer_api_client.config.json -o ./api_client -t ./typescript_generator_templates
+        cd ./api_client
+          sed -i 's/OpenAPI\-Generator Contributors/mohsininsignia <mohsin@insigniabiz.com>/' package.json
+          sed -i 's/    "prepare": "npm run build"//' package.json
+          sed -i 's/outDir dist\/",/outDir dist\/"/' package.json
+          sed -i 's/\.\/dist\/index\.js/\.\/index\.js/' package.json
+          sed -i 's/\.\/dist\/index\.d\.ts/\.\/index\.d\.ts/' package.json
+          npm i axios@latest
+          npm i -D @types/node@latest typescript@latest
+          npm run build
+          
+      - name: Commit Generated Code
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add ./api-client
+          git commit -m "Update generated API client"
+          git push
+
