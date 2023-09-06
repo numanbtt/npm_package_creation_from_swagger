@@ -11,15 +11,15 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Dependencies
         run: npm install
 
       - name: Generate API Client
         env:
-          OPEN_API_FILE_PATH: "swagger.json"
-          OPEN_API_GENERATE_CONFIG: "advancer_api_client.config.json"
+          OPEN_API_FILE_PATH: "./swagger.json"
+          OPEN_API_GENERATE_CONFIG: "./advancer_api_client.config.json"
           OPEN_API_GENERATE_DIRECTORY: "./api_client"
         run: |
           npx openapi-generator-cli generate -i "$OPEN_API_FILE_PATH" -g typescript-axios -c "$OPEN_API_GENERATE_CONFIG" -o "$OPEN_API_GENERATE_DIRECTORY" -t "./typescript_generator_templates"
