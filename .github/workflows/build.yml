@@ -24,11 +24,6 @@ jobs:
         run: |
           npx openapi-generator-cli generate -i "$OPEN_API_FILE_PATH" -g typescript-axios -c "$OPEN_API_GENERATE_CONFIG" -o "$OPEN_API_GENERATE_DIRECTORY" -t "./typescript_generator_templates"
           cd "$OPEN_API_GENERATE_DIRECTORY"
-          sed -i 's/OpenAPI\-Generator Contributors/numanbtt <numanbtt@gmail.com>/' package.json
-          sed -i 's/    "prepare": "npm run build"//' package.json
-          sed -i 's/outDir dist\/",/outDir dist\/"/' package.json
-          sed -i 's/\.\/dist\/index\.js/\.\/index\.js/' package.json
-          sed -i 's/\.\/dist\/index\.d\.ts/\.\/index\.d\.ts/' package.json
           npm i axios@latest
           npm i -D @types/node@latest typescript@latest
           npm run build
