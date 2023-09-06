@@ -17,10 +17,14 @@ jobs:
         run: npm install
 
       - name: Generate API Client
+        env:
+          OPEN_API_FILE_PATH: "swagger.json"
+          OPEN_API_GENERATE_CONFIG: "advancer_api_client.config.json"
+          OPEN_API_GENERATE_DIRECTORY: "./api_client"
         run: |
-        npx @openapitools/openapi-generator-cli generate -i path/to/swagger.json -g typescript-axios -c advancer_api_client.config.json -o ./api_client -t ./typescript_generator_templates
-        cd ./api_client
-          sed -i 's/OpenAPI\-Generator Contributors/mohsininsignia <mohsin@insigniabiz.com>/' package.json
+          npx openapi-generator-cli generate -i "$OPEN_API_FILE_PATH" -g typescript-axios -c "$OPEN_API_GENERATE_CONFIG" -o "$OPEN_API_GENERATE_DIRECTORY" -t "./typescript_generator_templates"
+          cd "$OPEN_API_GENERATE_DIRECTORY"
+          sed -i 's/OpenAPI\-Generator Contributors/numanbtt <numanbtt@gmail.com>/' package.json
           sed -i 's/    "prepare": "npm run build"//' package.json
           sed -i 's/outDir dist\/",/outDir dist\/"/' package.json
           sed -i 's/\.\/dist\/index\.js/\.\/index\.js/' package.json
@@ -33,7 +37,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add ./api-client
+          git add ./api_client
           git commit -m "Update generated API client"
           git push
 
