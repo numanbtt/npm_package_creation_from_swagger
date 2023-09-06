@@ -27,6 +27,7 @@ jobs:
           npm i axios@latest
           npm i -D @types/node@latest typescript@latest
           npm run build
+          cp package.json ./dist/package.json
           
       - name: Commit Generated Code
         run: |
