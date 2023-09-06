@@ -30,8 +30,8 @@ jobs:
           
       - name: Commit Generated Code
         run: |
-          git config numanbtt "GitHub Actions"
-          git config numanbtt@gmail.com "actions@github.com"
+          git config user.name "numanbtt"
+          git config user.email "numanbtt@gmail.com"
           git add ./api_client
           git commit -m "Update generated API client"
           git push
